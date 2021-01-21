@@ -51,9 +51,13 @@ class MainActivity : AppCompatActivity() {
         if (phoneNumber.isEmpty()) return
 
         if(isAppInstalled()) {
-            val i = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:$phoneNumber"))
-            i.setPackage("com.whatsapp")
-            startActivity(Intent.createChooser(i, "Choose"))
+            val sendIntent = Intent("android.intent.action.MAIN")
+            sendIntent.action = Intent.ACTION_VIEW
+            sendIntent.setPackage("com.whatsapp")
+            val url =
+                    "https://api.whatsapp.com/send?phone=$phoneNumber&text= "
+            sendIntent.data = Uri.parse(url)
+            startActivity(sendIntent)
         } else {
             Toast.makeText(this, "Whatsapp not installed", Toast.LENGTH_LONG).show()
         }
