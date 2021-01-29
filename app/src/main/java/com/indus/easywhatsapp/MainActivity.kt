@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             sendIntent.action = Intent.ACTION_VIEW
             sendIntent.setPackage("com.whatsapp")
             val url =
-                    "https://api.whatsapp.com/send?phone=$phoneNumber&text= "
+                    "https://api.whatsapp.com/send?phone=91$phoneNumber&text= "
             sendIntent.data = Uri.parse(url)
             startActivity(sendIntent)
         } else {
